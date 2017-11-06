@@ -8,7 +8,7 @@ WARN="\033[41;37m"
 WHITE="\033[0m"
 
 #check run privileges
-if [ `id -u` -eq 0 ];then
+if [ `id -u` -ne 0 ];then
 	echo "Please run with root privileges!"
 	exit 1
 fi

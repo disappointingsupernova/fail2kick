@@ -39,9 +39,10 @@ read -p "Do you want monitor secure log?(y/n)  " monitor_sec
 	;;
 	n|N)
 		echo "You select do not monitor secure."
+		break
 	;;
 	*)
 		echo "Input Error for Monitor secure!"
 	;;
 	esac
-
+done
