@@ -9,7 +9,7 @@
 #Monitor cpu
 chk_cpu(){
 cpu_model=`cat /proc/cpuinfo  | grep "model name" | uniq | awk -F: '{print $2}'`
-cpu_physical=`cat /proc/cpuinfo | grep "physical id" | awk -F : '{print $2}' | uniq`
+cpu_physical=`cat /proc/cpuinfo | grep "physical id" | awk -F : '{print $2}' |wc -l`
 cpu_cores=`cat /proc/cpuinfo| grep "cpu cores"| awk -F: '{print $2}'|uniq`
 echo "cpu model:$cpu_model"
 echo "cpu physical:$cpu_physical"
@@ -19,8 +19,22 @@ chk_cpu
 
 #Monitor ram
 chk_ram(){
-ram_total=`cat /proc/meminfo  | grep MemTotal`
-ram_free=`cat /proc/meminfo  | grep MemFree`
-echo -e "$ram_total\n$ram_free"
+ram_total_s=`cat /proc/meminfo  | grep MemTotal | tr -d "MemTotal:kB "`
+ram_free_s=`cat /proc/meminfo  | grep MemFree | tr -d "MemFree:kB "`
+binary=1024
+((ram_total=$ram_total_s/$binary))
+((ram_free=$ram_free_s/$binary))
+echo "cpu total: $ram_total MB"
+echo "cpu free : $ram_free MB"
 }
 chk_ram
+
+#Print system info
+sysinfo(){
+echo "sysbit: $sys_bit"
+echo "OS:$sys_os"
+}
+sysinfo
+
+#Monitor network
+

@@ -11,7 +11,7 @@ printf "
 # Blog          Http://www.yunweijilu.com                           #
 #####################################################################
 "
-
+#monitor host
 echo -e "${GREEN}"
 while true;do
 read -p "Do you want monitor host?(y/n)  " monitor_yn
@@ -21,7 +21,7 @@ read -p "Do you want monitor host?(y/n)  " monitor_yn
 		break
 	;;
 	n|N)
-		echo "You select do not monitor host!"
+		echo "You select do not monitor host."
 		break
 	;;
 	*)
@@ -29,4 +29,19 @@ read -p "Do you want monitor host?(y/n)  " monitor_yn
 	;;
 	esac
 done
+
+#monitor secure
+while true;do
+read -p "Do you want monitor secure log?(y/n)  " monitor_sec
+	case $monitor_sec in
+	y|Y)
+		. include/deny_add.sh
+	;;
+	n|N)
+		echo "You select do not monitor secure."
+	;;
+	*)
+		echo "Input Error for Monitor secure!"
+	;;
+	esac
 
