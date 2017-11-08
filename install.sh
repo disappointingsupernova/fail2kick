@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-. include/common.sh
 clear
 printf "
 #####################################################################
@@ -11,38 +10,11 @@ printf "
 # Blog          Http://www.yunweijilu.com                           #
 #####################################################################
 "
-#monitor host
-echo -e "${GREEN}"
-while true;do
-read -p "Do you want monitor host?(y/n)  " monitor_yn
-	case $monitor_yn in
-	y|Y)
-		. include/monitor.sh
-		break
-	;;
-	n|N)
-		echo "You select do not monitor host."
-		break
-	;;
-	*)
-		echo "Input Error for monitor_yn!"
-	;;
-	esac
-done
+fail2kick(){
+. include/common.sh
+. include/sysinfo.sh
+. include/Menu.sh
+}
 
-#monitor secure
-while true;do
-read -p "Do you want monitor secure log?(y/n)  " monitor_sec
-	case $monitor_sec in
-	y|Y)
-		. include/deny_add.sh
-	;;
-	n|N)
-		echo "You select do not monitor secure."
-		break
-	;;
-	*)
-		echo "Input Error for Monitor secure!"
-	;;
-	esac
-done
+fail2kick 2>&1 | tee fail2kick.log
+echo -e "$WHITE"

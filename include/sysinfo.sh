@@ -15,7 +15,6 @@ echo "cpu model:$cpu_model"
 echo "cpu physical:$cpu_physical"
 echo "cpu cores:$cpu_cores"
 }
-chk_cpu
 
 #Monitor ram
 chk_ram(){
@@ -27,13 +26,17 @@ binary=1024
 echo "cpu total: $ram_total MB"
 echo "cpu free : $ram_free MB"
 }
-chk_ram
 
 #Print system info
 sysinfo(){
 echo "sysbit: $sys_bit"
 echo "OS:$sys_os"
 }
+
+
+
+chk_cpu
+chk_ram
 sysinfo
 
 #Monitor network

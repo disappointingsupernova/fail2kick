@@ -43,7 +43,7 @@ else
 	exit 0
 fi
 
-test [ `getconf LONG_BIT` -eq 64 ] && sys_bit=64 || sys_bit=32
+[ `getconf LONG_BIT` -eq 64 ] && sys_bit=64 || sys_bit=32
 }
 chk_sys
 
@@ -55,4 +55,4 @@ else
 	seq_log_dir="/var/log/auth"
 fi
 }
-chk_seq_log
+chk_sec_log
