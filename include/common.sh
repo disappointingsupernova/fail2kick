@@ -7,6 +7,10 @@ YELLOW="\033[0;33m"
 WARN="\033[41;37m"
 WHITE="\033[0m"
 
+#Define variable
+hosts_deny="/etc/hosts.deny"
+hosts_allow="/etc/hosts.allow"
+
 #check run privileges
 if [ `id -u` -ne 0 ];then
 	echo "Please run with root privileges!"
@@ -47,6 +51,25 @@ fi
 }
 chk_sys
 
+#Define install way
+if [ $os == "centos" ];then
+	Install="yum install -y"
+	
+else
+	Install="apt-get install -y"
+fi
+
+
+#check TCP_Wrappers installed, hosts deny need this
+if [ `ldd /usr/sbin/sshd  | grep libwrap |wc -l` -ne 1 ];then
+	echo "It will install tcp_wrappers"
+	if [ $os == "centos" ];then
+		$Install tcp_wrappers
+	else
+		$Install tcp_wrappers
+	fi
+fi
+
 #define secure log
 chk_sec_log(){
 if [ $os == "centos" ];then
@@ -56,3 +79,6 @@ else
 fi
 }
 chk_sec_log
+
+
+

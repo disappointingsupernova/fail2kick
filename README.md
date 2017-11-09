@@ -1,7 +1,8 @@
 # fail2kick  
-fail2kick是用来监控主机负载和防止非法用户破解ssh登陆的shell脚本
+fail2kick是用来监控主机负载和防止非法用户破解ssh登陆的shell脚本,类似于denyhosts,区别在于本脚本采用的是bash shell编写,无需安装python环境.
 ## 介绍  
-根据ssh登陆产生的log日志文件,对ssh登陆失败日志进行分析截取
+根据ssh登陆产生的log日志文件,对ssh登陆失败日志进行分析截取(RedHat系列日志在/var/log/secure,Debian系列在/var/log/auth.log)
+把超过次数的IP加入/etc/hosts.deny文件,已达到防止暴力破解的目的.
  1. 监控功能
 - 监控主机cpu,内存,网络流量
 - 提取远程sshd登陆失败用户,生成用户详细列表,包括时间点,用户名,来源ip,失败次数 

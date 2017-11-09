@@ -1,21 +1,12 @@
 #!/bin/bash
-
-export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-clear
-printf "
 #####################################################################
 # fail2kick,a solution combine monitor host,warn by email	    #
 # auto ban ip and kick it.					    #
 # Author        Hehl <1181554113@qq.com>                            #
 # Blog          Http://www.yunweijilu.com                           #
 #####################################################################
-"
-fail2kick(){
-. include/common.sh
-. include/sysinfo.sh
-. include/public.sh
-. include/Menu.sh
-}
 
-fail2kick 2>&1 | tee fail2kick.log
-echo -e "$WHITE"
+your_ip=`who | tr -d "()" | awk -F' ' '{print $5}'| uniq`
+host_ip=$(curl members.3322.org/dyndns/getip 2>/dev/null)
+echo Your ip: $your_ip
+echo Host ip: $host_ip
