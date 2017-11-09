@@ -22,11 +22,11 @@ chk_sys(){
 if [ -f /etc/redhat-release ];then
 	sys_os=`cat /etc/redhat-release`
 	os="centos"
-elif [ -f cat /etc/issue ];then
+elif [ -f /etc/issue ];then
 	if [ `cat /etc/issue | grep -i "Cent" |wc -l` -eq 1 ];then
 		sys_os=`cat /etc/issue | grep -i "Cent"`
 		os="centos"
-	elif [ `cat /etc/issue | grep -i "Ubuntu"` -eq 1 ];then
+	elif [ `cat /etc/issue | grep -i "Ubuntu" | wc -l` -eq 1 ];then
 		sys_os=`cat /etc/issue | grep -i "Ubuntu"`
 		os="ubuntu"
 	elif [ -f /proc/version ];then
