@@ -21,4 +21,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Define ignore file or directory
+ip.txt
 fail2kick.log
