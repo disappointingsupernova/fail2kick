@@ -9,6 +9,7 @@
 echo -e "$GREEN"
 #Add Your ip to allow
 if [ `grep $your_ip $hosts_allow | wc -l` -ne 1 ];then
+	sed -i '/sshd:'$your_ip'/d' $hosts_dent
 	sed -i '/sshd:'$your_ip'/d' $hosts_allow
 	echo "sshd:$your_ip" >> $hosts_allow
 fi
