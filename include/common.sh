@@ -71,14 +71,11 @@ if [ `ldd /usr/sbin/sshd  | grep libwrap |wc -l` -ne 1 ];then
 fi
 
 #define secure log
-chk_sec_log(){
 if [ $os == "centos" ];then
 	sec_log_dir="/var/log/secure"
 else
-	seq_log_dir="/var/log/auth"
+	sec_log_dir="/var/log/auth.log"
 fi
-}
-chk_sec_log
 
 
 
