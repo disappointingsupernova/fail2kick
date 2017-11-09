@@ -38,6 +38,6 @@ else
 	exit 1
 fi
 echo -e "$WHITE"
-service /sshd restart
+service sshd restart
 
 
