@@ -8,7 +8,6 @@
 
 echo -e "$GREEN"
 #Add Your ip to allow
-sed -i '/sshd:'$your_ip'/d' $hosts_deny
 if [ `grep $your_ip $hosts_allow | wc -l` -ne 1 ];then
 	sed -i '/sshd:'$your_ip'/d' $hosts_allow
 	echo "sshd:$your_ip" >> $hosts_allow
@@ -38,6 +37,9 @@ else
 	exit 1
 fi
 echo -e "$WHITE"
+
+#Allwayes remove your ip from hosts.deny
+sed -i '/sshd:'$your_ip'/d' $hosts_deny
 service sshd restart
 
 
