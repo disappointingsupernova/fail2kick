@@ -14,7 +14,7 @@ if [ `grep $your_ip $hosts_allow | wc -l` -ne 1 ];then
 fi
 
 #Get List
-grep "failure" $sec_log_dir | awk -F "=" '{ print $7 }' | tr -d "[a-z]" | tr -s " \n"|sort |uniq -c|sort -n -r > ip.txt
+grep "failure" $sec_log_dir|grep "rhost=[0-9]"| awk -F "=" '{ print $7 }' | tr -d "[a-z]" | tr -s " \n"|sort |uniq -c|sort -n -r > ip.txt
 
 #Seprate ip and count
 a=( `awk '{print $1}' ip.txt` )
