@@ -34,7 +34,7 @@ echo "OS:$sys_os"
 }
 
 
-
+echo -e "${GREEN}"
 chk_cpu
 chk_ram
 sysinfo
