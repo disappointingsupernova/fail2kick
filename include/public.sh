@@ -6,7 +6,10 @@
 # Blog          Http://www.yunweijilu.com                           #
 #####################################################################
 
-your_ip=`who | tr -d "()" | awk -F' ' '{print $5}'| uniq`
-host_ip=$(curl members.3322.org/dyndns/getip 2>/dev/null)
-echo Your ip: $your_ip
-echo Host ip: $host_ip
+#check ip.txt
+chk_ip(){
+if [ ! -f ip.txt ];then
+	echo -e "${RED}There is no ip.txt,please add deny ip."
+	exit 1
+fi
+}

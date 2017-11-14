@@ -10,6 +10,8 @@ WHITE="\033[0m"
 #Define variable
 hosts_deny="/etc/hosts.deny"
 hosts_allow="/etc/hosts.allow"
+your_ip=`who | tr -d "()" | awk -F' ' '{print $5}'| uniq`
+host_ip=$(curl members.3322.org/dyndns/getip 2>/dev/null)
 
 #check run privileges
 if [ `id -u` -ne 0 ];then
@@ -52,13 +54,14 @@ fi
 chk_sys
 
 #Define install way
+Install(){
 if [ $os == "centos" ];then
-	Install="yum install -y"
+	yum install -y $*
 	
 else
-	Install="apt-get install -y"
+	apt-get install -y $*
 fi
-
+}
 
 #check TCP_Wrappers installed, hosts deny need this
 if [ `ldd /usr/sbin/sshd  | grep libwrap |wc -l` -ne 1 ];then

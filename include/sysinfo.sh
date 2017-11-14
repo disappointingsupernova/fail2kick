@@ -27,17 +27,18 @@ echo "cpu total: $ram_total MB"
 echo "cpu free : $ram_free MB"
 }
 
-#Print system info
-sysinfo(){
-echo "sysbit: $sys_bit"
-echo "OS:$sys_os"
-}
-
-
 echo -e "${GREEN}"
+sysinfo(){
+echo "####################################################################"
 chk_cpu
 chk_ram
-sysinfo
+echo "sysbit: $sys_bit"
+echo "OS:$sys_os"
+echo Your ip: $your_ip
+echo Host ip: $host_ip
+echo "####################################################################"
+}
+sysinfo 2>&1 | tee mail.txt
 
 #Monitor network
 

@@ -42,4 +42,3 @@ echo -e "$WHITE"
 sed -i '/sshd:'$your_ip'/d' $hosts_deny
 service sshd restart
 
-
