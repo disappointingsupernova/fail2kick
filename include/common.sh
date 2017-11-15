@@ -19,7 +19,7 @@ if [ `id -u` -ne 0 ];then
 	exit 1
 fi
 
-#chkck system OS
+#check system OS
 chk_sys(){
 if [ -f /etc/redhat-release ];then
 	sys_os=`cat /etc/redhat-release`
@@ -79,6 +79,4 @@ if [ $os == "centos" ];then
 else
 	sec_log_dir="/var/log/auth.log"
 fi
-
-
 
