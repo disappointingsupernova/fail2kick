@@ -11,6 +11,21 @@ fail2kick是用来监控主机负载和防止非法用户破解ssh登陆的shell
  3. 自定义功能
 - 自定义允许ssh在自定义时间段内的失败次数
 - 自定义发送邮件时间时间间隔
+
+## 部署  
+方式一：点击下载https://gitee.com/hehl/fail2kick/repository/archive/master.zip  
+方式二：git clone https://gitee.com/hehl/fail2kick.git  (需要安装git)  
+
+```
+cd fail2kick  
+./install.sh    
+```
+![1](http://imgs.yunweijilu.com/img/fail2kick/1.jpg)  
+打印结果  
+![2](http://imgs.yunweijilu.com/img/fail2kick/2.jpg)  
+可以上ip138.com查看IP归属地
+
 ## 注:
  -  默认5分钟之内登陆失败10次以上,对登陆的ip进行屏蔽,30分钟后自行移除
  -  可自行修改配置,设置检测时间,允许的失败次数,以及多久移除黑名单IP
+
